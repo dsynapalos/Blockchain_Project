@@ -1,5 +1,5 @@
-def test_class_blockchain_variable_chain_is_empty_list(blockchain):
-    assert blockchain.chain == []
+def test_class_blockchain_variable_chain_is_list(blockchain):
+    assert type(blockchain.chain) == type([])
 
 def test_class_blockchain_method_block_variable_index_is_number(blockchain):
     assert type(blockchain.create_block(1, '0')["index"]) == type(0)
