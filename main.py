@@ -10,4 +10,10 @@ class Blockchain():
         self.create_block(proof=1, previous_hash='0')
 
     def create_block(self, proof=1, previous_hash='0'):
-        return True
+        block = {
+            'index': len(self.chain) + 1,
+            'timestamp': datetime.datetime.now(),
+            'proof': proof,
+            'previous_hash': previous_hash
+        }
+        return block
