@@ -1,13 +1,13 @@
 def test_class_blockchain_variable_chain_is_list(blockchain):
     assert type(blockchain.chain) == type([])
 
+
 def test_class_blockchain_method_block_variable_index_is_number(blockchain):
     assert type(blockchain.create_block(1, '0')["index"]) == type(0)
 
 
 def test_class_blockchain_method_block_variable_timestamp_is_timestamp(blockchain):
-    from datetime import datetime
-    assert type(blockchain.create_block(1, '0')["timestamp"]) == type(datetime.now())
+    assert type(blockchain.create_block(1, '0')["timestamp"]) == type("")
 
 
 def test_class_blockchain_method_block_variable_proof_is_number(blockchain):
