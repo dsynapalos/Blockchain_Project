@@ -1,0 +1,10 @@
+image:
+  centos:7
+
+stages:
+  - first stage
+
+Build:
+  stage: first stage
+  script:
+    - python3 --version
