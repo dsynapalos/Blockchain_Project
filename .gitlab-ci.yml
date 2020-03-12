@@ -1,5 +1,5 @@
 image:
-  centos:7
+  alpine:3.10
 
 stages:
   - first stage
@@ -8,3 +8,5 @@ Build:
   stage: first stage
   script:
     - python3 --version
+
+ ERROR: Job failed: exit code 1
