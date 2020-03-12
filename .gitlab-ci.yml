@@ -8,5 +8,3 @@ Build:
   stage: first stage
   script:
     - python3 --version
-
- ERROR: Job failed: exit code 1
