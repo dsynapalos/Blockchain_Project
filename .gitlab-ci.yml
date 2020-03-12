@@ -1,5 +1,5 @@
 image:
-  3.9.0a4-alpine3.10 
+  python3.9.0a4-alpine3.10 
 stages:
   - first stage
 
