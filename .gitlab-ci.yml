@@ -1,6 +1,5 @@
 image:
-  alpine:3.10
-
+  3.9.0a4-alpine3.10 
 stages:
   - first stage
 
