@@ -3,7 +3,8 @@ image:
 stages:
   - first stage
 
-Build:
+Validate:
   stage: first stage
   script:
     - python3 --version
+    - pip3 install -r requirements.txt
