@@ -1,10 +1,12 @@
 image:
   python:3.8
+
 stages:
-  - first stage
+  - build
 
 Validate:
-  stage: first stage
+  stage: build
   script:
     - python3 --version
     - pip3 install -r requirements.txt
+    - ll -la
