@@ -9,4 +9,4 @@ Validate:
   script:
     - python3 --version
     - pip3 install -r requirements.txt
-    - ll -la
+
