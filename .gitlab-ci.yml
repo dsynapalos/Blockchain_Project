@@ -7,5 +7,5 @@ stages:
 Validate:
   stage: build
   script:
-    - docker build Dockerfile
+    - docker build ./
 
