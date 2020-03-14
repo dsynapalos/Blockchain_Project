@@ -2,7 +2,7 @@ import datetime
 import hashlib
 import json
 from flask import Flask, jsonify
-a=0
+
 
 class Blockchain():
 
@@ -53,3 +53,16 @@ class Blockchain():
             previous_block = block
             block_index += 1
         return True
+
+
+if __name__ == "__main__":
+    app = Flask(__name__)
+    blockchain = Blockchain()
+
+
+    @app.route('/mine_block', methods=['GET'])
+    def mine_block():
+        previous_block = blockchain.get_previous_block()
+        new_proof = blockchain.proof_of_work(previous_block['proof'])
+        previous_hash = blockchain.hash(previous_block)
+        blockchain.create_block(new_proof, previous_block)

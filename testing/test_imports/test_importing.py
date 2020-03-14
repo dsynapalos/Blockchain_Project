@@ -9,3 +9,7 @@ def test_import_hashlib():
 def test_import_json():
     import json
     assert json.loads('1')
+
+def test_import_flask():
+    import flask
+    assert flask.Flask(__name__)
