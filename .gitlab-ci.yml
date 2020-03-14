@@ -1,5 +1,5 @@
 image:
-  python:3.8
+  docker:19.03.1-dind
 
 stages:
   - build
@@ -7,6 +7,5 @@ stages:
 Validate:
   stage: build
   script:
-    - python3 --version
-    - pip3 install -r requirements.txt
+    - docker build Dockerfile
 
