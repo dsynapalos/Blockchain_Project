@@ -1,7 +1,7 @@
 import datetime
 import hashlib
 import json
-from flask import Flask, jsonify
+from flask import Flask
 
 
 class Blockchain():
@@ -83,6 +83,19 @@ def get_chain():
                'length': len(blockchain.chain)
 
            }, 200
+
+
+@app.route('/is_valid', methods=['GET'])
+def is_valid():
+    if blockchain.is_chain_valid(blockchain.chain):
+        return {
+                   'message': 'Chain is valid.'
+
+               }, 200
+    else:
+        return {
+                   'message': 'Chain is invalid.'
+               }, 400
 
 
 if __name__ == "__main__":
