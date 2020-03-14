@@ -1,0 +1,9 @@
+image:
+  python:3.9.0a4-alpine3.10 
+stages:
+  - first stage
+
+Build:
+  stage: first stage
+  script:
+    - python3 --version
