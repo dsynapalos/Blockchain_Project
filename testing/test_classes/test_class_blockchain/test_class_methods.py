@@ -3,7 +3,7 @@ def test_class_blockchain_method_create_block_is_defined(blockchain):
 
 
 def test_class_blockchain_method_create_block_returns_dict(blockchain):
-    assert type(blockchain.create_block(1, '0')) == type({})
+    assert isinstance(blockchain.create_block(1, '0'), dict)
 
 
 def test_class_blockchain_method_create_block_appends_block_to_chain(blockchain):

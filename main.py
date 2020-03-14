@@ -64,27 +64,21 @@ def mine_block():
     previous_block = blockchain.get_previous_block()
     new_proof = blockchain.proof_of_work(previous_block['proof'])
     previous_hash = blockchain.hash(previous_block)
-    block = blockchain.create_block(new_proof, previous_block)
+    block = blockchain.create_block(new_proof, previous_hash)
     return {
-        'message': 'Block successfully mined',
-        'index': block['index'],
-        'timestamp': block['timestamp'],
-        'proof': block['proof'],
-        'previous_hash': block['previous_hash'],
+               'message': 'Block successfully mined',
+               'index': block['index'],
+               'timestamp': block['timestamp'],
+               'proof': block['proof'],
+               'previous_hash': block['previous_hash'],
 
-    }, 200
+           }, 200
+
 
 @app.route('/get_chain', methods=['GET'])
 def get_chain():
-    previous_block = blockchain.get_previous_block()
-    new_proof = blockchain.proof_of_work(previous_block['proof'])
-    previous_hash = blockchain.hash(previous_block)
-    block = blockchain.create_block(new_proof, previous_block)
     return {
-        'message': 'Block successfully mined',
-        'index': block['index'],
-        'timestamp': block['timestamp'],
-        'proof': block['proof'],
-        'previous_hash': block['previous_hash'],
+               'message': 'Chain successfully fetched',
+               'chain': blockchain.chain
 
-    }, 200
+           }, 200
