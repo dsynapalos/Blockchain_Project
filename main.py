@@ -79,6 +79,11 @@ def mine_block():
 def get_chain():
     return {
                'message': 'Chain successfully fetched',
-               'chain': blockchain.chain
+               'chain': blockchain.chain,
+               'length': len(blockchain.chain)
 
            }, 200
+
+
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=5000)
