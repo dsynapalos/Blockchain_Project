@@ -2,7 +2,8 @@ image: docker:19.03.1
 services:
   - name: docker:19.03.1-dind
 
-
+stages:
+  - build
 
 variables:
   DOCKER_DRIVER: overlay2
@@ -10,17 +11,14 @@ variables:
 
 before_script:
   - docker info
-
-
-stages:
-  - build
+  - docker login registry.gitlab.com -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
 
 build:
   stage: build
   script:
-    #- apk add curl
-    - docker build . -t blockchain
-    - docker run -d -p 5000:5000 --name block blockchain
-    - docker inspect block
-    #- curl 127.0.0.1:5000/get_chain
+    - docker build . -t registry.gitlab.com/dsynapalos/blockchain_project
+    - docker run -d -p 5000:5000 --name blockchain registry.gitlab.com/dsynapalos/blockchain_project
+
+after_script:
+  - docker push registry.gitlab.com/dsynapalos/blockchain_project
 
