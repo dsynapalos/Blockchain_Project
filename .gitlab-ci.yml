@@ -1,9 +1,26 @@
-image:
-  python:3.8
-stages:
-  - first stage
+image: docker:19.03.1
+services:
+  - name: docker:19.03.1-dind
 
-Build:
-  stage: first stage
+
+
+variables:
+  DOCKER_DRIVER: overlay2
+  DOCKER_TLS_CERTDIR: ""
+
+before_script:
+  - docker info
+
+
+stages:
+  - build
+
+build:
+  stage: build
   script:
-    - python3 --version
+    #- apk add curl
+    - docker build . -t blockchain
+    - docker run -d -p 5000:5000 --name block blockchain
+    - docker inspect block
+    #- curl 127.0.0.1:5000/get_chain
+
