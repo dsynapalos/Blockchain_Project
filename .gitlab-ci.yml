@@ -17,7 +17,7 @@ build:
   stage: build
   script:
     - docker build . -t registry.gitlab.com/dsynapalos/blockchain_project
-    - docker run -d -p 5000:5000 --name blockchain registry.gitlab.com/dsynapalos/blockchain_project
+    - docker run -d -p 5000:5000 --name blockchain registry.gitlab.com/$DOCKER_USERNAME/$DOCKER_REPOSITORY
 
 after_script:
   - docker push registry.gitlab.com/dsynapalos/blockchain_project

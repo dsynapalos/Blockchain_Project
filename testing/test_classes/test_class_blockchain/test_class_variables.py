@@ -2,8 +2,16 @@ def test_class_blockchain_variable_chain_is_list(blockchain):
     assert isinstance(blockchain.chain, list)
 
 
+def test_class_blockchain_variable_transactions_is_list(blockchain):
+    assert isinstance(blockchain.transactions, list)
+
+
 def test_class_blockchain_variable_chain_not_empty(blockchain):
     assert blockchain.chain != []
+
+
+def test_class_blockchain_variable_transactions_initiates_empty(blockchain):
+    assert blockchain.transactions == []
 
 
 def test_class_blockchain_method_block_variable_index_is_number(blockchain):
@@ -20,3 +28,7 @@ def test_class_blockchain_method_block_variable_proof_is_number(blockchain):
 
 def test_class_blockchain_method_block_variable_previous_hash_is_string(blockchain):
     assert isinstance(blockchain.create_block(1, '0')["previous_hash"], str)
+
+
+def test_class_blockchain_method_block_variable_transactions_is_list(blockchain):
+    assert isinstance(blockchain.create_block(1, '0')["transactions"], list)
