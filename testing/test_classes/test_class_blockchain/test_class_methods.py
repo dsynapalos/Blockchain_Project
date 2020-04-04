@@ -25,3 +25,13 @@ def test_class_blockchain_method_hash(blockchain):
 
 def test_class_blockchain_method_is_chain_valid(blockchain):
     assert blockchain.is_chain_valid(blockchain.chain)
+
+
+def test_class_blockchain_method_add_transaction_is_valid(blockchain):
+    assert blockchain.add_transaction(1, 2, 3)
+
+
+def test_class_blockchain_method_add_transaction_appends_dict_correctly(blockchain):
+    blockchain.add_transaction(1, 2, 3)
+    assert blockchain.transactions == [{'sender': 1, 'receiver': 2, 'amount': 3}]
+

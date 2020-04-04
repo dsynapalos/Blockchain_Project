@@ -1,13 +1,17 @@
 import datetime
 import hashlib
 import json
-from flask import Flask
+from flask import Flask, jsonify, request
+import requests
+from uuid import uuid4
+from urllib.parse import urlparse
 
 
 class Blockchain():
 
     def __init__(self):
         self.chain = []
+        self.transactions = []
         self.create_block(proof=1, previous_hash='0')
 
     def create_block(self, proof=1, previous_hash='0'):
@@ -15,7 +19,8 @@ class Blockchain():
             'index': len(self.chain) + 1,
             'timestamp': str(datetime.datetime.now()),
             'proof': proof,
-            'previous_hash': previous_hash
+            'previous_hash': previous_hash,
+            'transactions': self.transactions
         }
         self.chain.append(block)
         return block
@@ -54,9 +59,32 @@ class Blockchain():
             block_index += 1
         return True
 
+    def add_transaction(self, sender, reciever, ammount):
+        self.transactions.append({'sender': sender, 'receiver': reciever, 'amount': ammount})
+        previous_block = self.get_previous_block()
+        next_block = previous_block['index'] + 1
+        return next_block
+
 
 app = Flask(__name__)
 blockchain = Blockchain()
+
+
+@app.route('/', methods=['GET'])
+def root():
+    return {
+               'message': 'Root stub. Try appending methods such as /help'
+           }, 200
+
+
+@app.route('/help', methods=['GET'])
+def help():
+    return {
+               'message': 'This is a list of available methods.',
+               '/mine_block': 'Will create a new block and add it into the blockchain.',
+               '/get_chain': 'Will display the current blockchain structure.',
+               '/is_valid': 'Will test current chain for validity.'
+           }, 200
 
 
 @app.route('/mine_block', methods=['GET'])
